@@ -34,6 +34,15 @@
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#scatterplot", data);
 
+    let qwerty = table()
+      .x(d => d.unemployment)
+      .xLabel("UNEMPLOYMENT RATE")
+      .y(d => d.murder)
+      .yLabel("MURDER RATE IN STATE PER 100000")
+      .yLabelOffset(150)
+      .selectionDispatcher(d3.dispatch(dispatchString))
+      ("#table", data);
+
     // When the line chart selection is updated via brushing, 
     // tell the scatterplot to update it's selection (linking)
     lcYearPoverty.selectionDispatcher().on(dispatchString, spUnemployMurder.updateSelection);
