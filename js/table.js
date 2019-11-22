@@ -18,7 +18,16 @@ function table() {
                 '</td><td>' + data.murder + '</td>'
             }
             )
+            .on("mouseover", function(d){
+                d3.select(this)
+                    .style("background-color", "orange");
+            })
+            .on("mouseout", function(d){
+                d3.select(this)
+                    .style("background-color","transparent");
+            });
         }
     return chart;
+
 
 }

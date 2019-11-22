@@ -32,6 +32,10 @@ h1, h2, h3 {
   flex: 1;  
 }
 
+.table-holder {
+	flex: 2
+}
+
 /* Default style for marks and channels used */
 .point {
   fill: white;
