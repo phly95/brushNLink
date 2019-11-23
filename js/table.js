@@ -25,7 +25,19 @@ function table() {
             .on("mouseout", function(d){
                 d3.select(this)
                     .style("background-color","transparent");
+            })
+            .on("click", function(d){
+                d3.select(this)
+                    .style("background-color","green");
             });
+
+            
+
+
+            
+
+
+
         }
     return chart;
 
