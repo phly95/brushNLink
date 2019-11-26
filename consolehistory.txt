@@ -1,0 +1,6 @@
+d3.select('table').selectAll('.selected').size()
+d3.selectAll('.selected').size()
+tabley.selectAll('selected').size()
+tabley.selectAll('.selected').size()
+tabley.selectAll('.selected')
+tabley

@@ -9,6 +9,7 @@
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
+    const dispatchStringey = "selectionUpdated";
 
     // Create a line chart given x and y attributes, labels, offsets; 
     // a dispatcher (d3-dispatch) for selection events; 
@@ -34,16 +35,28 @@
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#scatterplot", data);
 
-    let qwerty = table()
+    let tabley = table()
+      .selectionDispatcher(d3.dispatch(dispatchString))
+      // .selectionDispatchere(d3.dispatch(dispatchString))
       ("#table", data);
 
     // When the line chart selection is updated via brushing, 
     // tell the scatterplot to update it's selection (linking)
-    lcYearPoverty.selectionDispatcher().on(dispatchString, spUnemployMurder.updateSelection);
+    lcYearPoverty.selectionDispatcher().on(dispatchString + '.lc-to-sp', spUnemployMurder.updateSelection);
+    lcYearPoverty.selectionDispatcher().on(dispatchString + '.lc-to-tab', tabley.updateSelection);
 
     // When the scatterplot selection is updated via brushing, 
     // tell the line chart to update it's selection (linking)
-    spUnemployMurder.selectionDispatcher().on(dispatchString, lcYearPoverty.updateSelection);
+    spUnemployMurder.selectionDispatcher().on(dispatchString + '.sp-to-lc', lcYearPoverty.updateSelection);
+    spUnemployMurder.selectionDispatcher().on(dispatchString + '.sp-to-tab', tabley.updateSelection);
+
+    
+    //table send to other 2 graphs
+    tabley.selectionDispatcher().on(dispatchString + '.tab-to-sp', spUnemployMurder.updateSelection);
+    tabley.selectionDispatcher().on(dispatchString + '.tab-to-lc', lcYearPoverty.updateSelection);
+    
+
+
   });
 
 })());
